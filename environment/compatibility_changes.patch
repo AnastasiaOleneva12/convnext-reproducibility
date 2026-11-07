@@ -1,0 +1,48 @@
+diff --git a/models/Proposed.py b/models/Proposed.py
+index 93dc208..3e58a9c 100644
+--- a/models/Proposed.py
++++ b/models/Proposed.py
+@@ -185,6 +185,9 @@ def proposed_tiny(pretrained=False, **kwargs):
+ 
+ @register_model
+ def proposed_base(pretrained=False, **kwargs):
++    kwargs.pop('pretrained_cfg', None)
++    kwargs.pop('pretrained_cfg_overlay', None)
++    kwargs.pop("cache_dir", None)
+     model = Conv2NeXt(depths=[3, 3, 9, 3], dims=[128, 128, 256, 256], dim_power=4, **kwargs)
+     return model
+ 
+diff --git a/optim_factory.py b/optim_factory.py
+index 0206af3..99c0a00 100644
+--- a/optim_factory.py
++++ b/optim_factory.py
+@@ -1,16 +1,6 @@
+ import torch
+ from torch import optim as optim
+ 
+-from timm.optim.adafactor import Adafactor
+-from timm.optim.adahessian import Adahessian
+-from timm.optim.adamp import AdamP
+-from timm.optim.lookahead import Lookahead
+-from timm.optim.nadam import Nadam
+-from timm.optim.novograd import NovoGrad
+-from timm.optim.nvnovograd import NvNovoGrad
+-from timm.optim.radam import RAdam
+-from timm.optim.rmsprop_tf import RMSpropTF
+-from timm.optim.sgdp import SGDP
+ 
+ import json
+ 
+diff --git a/utils.py b/utils.py
+index 42a6edf..dcb5fb5 100644
+--- a/utils.py
++++ b/utils.py
+@@ -10,7 +10,7 @@ from pathlib import Path
+ 
+ import torch
+ import torch.distributed as dist
+-from torch._six import inf
++from math import inf
+ 
+ from tensorboardX import SummaryWriter
+ 
