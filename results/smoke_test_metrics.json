@@ -1,0 +1,26 @@
+{
+    "experiment": "smoke_test",
+    "model": "proposed_base",
+    "dataset": "CIFAR100",
+    "seed": 42,
+    "epochs": 2,
+    "parameters_millions": 7.41,
+    "gpu": "Tesla T4",
+    "training_time_seconds": 337,
+    "results": [
+        {
+            "epoch": 1,
+            "train_loss": 4.5738,
+            "test_loss": 4.0943,
+            "test_acc1": 7.28,
+            "test_acc5": 26.44
+        },
+        {
+            "epoch": 2,
+            "train_loss": 4.3965,
+            "test_loss": 3.857,
+            "test_acc1": 11.91,
+            "test_acc5": 35.67
+        }
+    ]
+}
